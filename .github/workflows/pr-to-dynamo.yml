@@ -2,7 +2,7 @@ name: PR -> Store in Dynamo
 
 on:
   pull_request:
-    branches: [dev, stage, prod]   # base branch (the branch being merged INTO)
+    branches: [dev, stage, prod]   # base branch (merged INTO)
     types: [opened, reopened, synchronize, edited, ready_for_review, closed]
 
 jobs:
@@ -14,6 +14,10 @@ jobs:
           ENDPOINT: https://xiztysz760.execute-api.ap-southeast-1.amazonaws.com/dev/test-runs
           GH_EVENT: ${{ toJson(github.event) }}
         run: |
-          curl -sS -X POST "$ENDPOINT" \
+          echo "$GH_EVENT" > payload.json
+          echo "POST $ENDPOINT"
+
+          # show status + response
+          curl -i -sS -X POST "$ENDPOINT" \
             -H "Content-Type: application/json" \
-            -d "$GH_EVENT"
+            --data-binary @payload.json
