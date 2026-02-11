@@ -1,1 +1,19 @@
 
+name: PR Tracker -> API Gateway
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, ready_for_review, closed]
+
+jobs:
+  send_pr_event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST PR payload to API Gateway
+        env:
+          ENDPOINT: https://xiztysz760.execute-api.ap-southeast-1.amazonaws.com/dev/test-runs
+          GH_EVENT: ${{ toJson(github.event) }}
+        run: |
+          curl -sS -X POST "$ENDPOINT" \
+            -H "Content-Type: application/json" \
+            -d "$GH_EVENT"
