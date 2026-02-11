@@ -1,4 +1,4 @@
-name: PR -> Store in Dynamo (via API Gateway)
+name: PR -> Store in Dynamo
 
 on:
   pull_request:
