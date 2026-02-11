@@ -1736,7 +1736,7 @@ const Dashboard = () => {
 
             <div className="border border-[#E2E2E2] p-6">
                 <div className="font-semibold text-[#26203B] mb-2 text-xl leading-none tracking-normal">
-                    Account & Agent Detailss
+                    Account & Agent Detailsss
                 </div>
                 <div className="font-medium text-[#313133] text-sm leading-none tracking-normal">
                     Enter the details for Account name and Agents in order to see
