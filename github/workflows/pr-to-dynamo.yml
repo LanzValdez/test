@@ -1,5 +1,4 @@
-
-name: PR Tracker -> API Gateway
+name: PR -> Store in Dynamo (via API Gateway)
 
 on:
   pull_request:
